@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::io::Write;
 
-const VALID_CHARS : &str = "+-<>[]";
+const VALID_CHARS : &str = "+-<>[],.";
 
 // Given a bf program, return a cleaned program
 // which contains only valid instructions.
@@ -82,7 +82,6 @@ pub fn run(program: &str) {
     while pc < program.len() 
         && ptr >= 0 && 
         ptr < tape.len() {
-        println!("pc = {pc}");
         match program[pc] {
             '+' => { tape[ptr] = tape[ptr].wrapping_add(1); },
             '-' => { tape[ptr] = tape[ptr].wrapping_sub(1); },
